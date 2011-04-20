@@ -1,0 +1,36 @@
+<table>
+<tr><td colspan=3>Откуда поступило</td><td><%= @message.agent.name %></td></tr>
+<tr><td colspan=3>Дата получения</td><td><%= "#{@message.obtain_at} (3-1-09/#{@message.int_number})"  %></td></tr>
+<tr><td colspan=3>Кому направлено</td><td><%= @message.executor_id%></td></tr>
+<tr><td colspan=3>Наименование структурного подразделения</td><td><%= @message.executor_id%></td></tr>
+<tr><td colspan=3>Краткое содержание</td><td><%= @message.subject%></td></tr>
+<tr><td colspan=3>Содержание</td><td>Документ</td></tr>
+
+
+
+
+<%counter = 1%>
+<%for card in @message.cards%>
+
+<tr>
+	<td><%=counter%></td>
+	<td><%=card.status%></td>
+	<td><%= link_to card.file, "http://192.168.20.14:3000/uploads/cards/card.#{@message.id}.#{card.id}.#{card.file.split(/\./)[-1]}" %></td>
+	<td><%= link_to 'Edit', edit_card_path(card) %></td>
+</tr>
+
+<%counter += 1%>
+<%end%>
+<% form_for(@message.cards.new, :html => {:multipart => true}) do |f|  %>
+<tr><td colspan=2>
+    <%= f.text_field :status %>
+	<%= f.hidden_field :message_id%>
+  <td/>
+     <%= f.file_field :upload%>
+     <%= f.submit 'Create' %>
+ 
+</tr>
+<% end %>
+</table>
+<%= link_to "Новая запись", :controller => "cards", :action => "new", :id => @message %>
+

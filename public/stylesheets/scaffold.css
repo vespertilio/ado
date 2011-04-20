@@ -1,0 +1,195 @@
+body { background-color: #fff; color: #333; }
+
+TABLE {
+	border-collapse: collapse;
+	background: #fff;
+	border: 3px solid;
+	
+}
+
+TD, TH {
+	padding: 3px;
+	border: 1px solid;
+	
+}
+TR {
+  border: 1px solid;
+}
+
+TR.normal {
+  border-left-color: green;
+  border-left: 6px;
+}
+TR.close {
+  border-left-color: orange;
+  border-left: 6px;
+}
+
+TR.dead {
+  border-left-color: red;
+  border-left: 6px;
+}
+DIV {}
+
+DIV.normal {
+  border-left-color: lightgreen;
+  border-left-width: 8px;
+  padding-left: 5px;
+  border-left-style: solid;  
+}
+DIV.close {
+  border-left-color: orange;
+  border-left-width: 8px;
+  padding-left: 5px;
+  border-left-style: solid;  
+}
+DIV.dead {
+  border-left-color: red;
+  border-left-width: 8px;
+  padding-left: 5px;
+  border-left-style: solid;  
+}
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+
+.btn {
+display: inline-block;
+background: none;
+margin: 0;
+padding: 3px 0;
+border-width: 0;
+overflow: visible;
+text-decoration: none;
+color: #333;
+}
+
+* html button.btn {
+padding-bottom: 1px;
+}
+
+/* Тут у нас хак для Gecko браузеров, 
+которые добавляют дополнительные 3px
+справа и слева от тега button*/
+html:not([lang*=""]) button.btn {
+margin: 0 -3px;
+}
+
+.btn span {
+background: #ddd url(img/bg-button.gif) repeat-x 0 0;
+margin: 0;
+padding: 3px 0;
+border-left: 1px solid #bbb;
+border-right: 1px solid #aaa;
+}
+
+* html .btn span {
+padding-top: 0;
+}
+
+.btn span span {
+position: relative;
+padding: 3px .4em;
+border-width: 0;
+border-top: 1px solid #bbb;
+border-bottom: 1px solid #aaa;
+}
+
+/* эти классы только для кнопок лево-центр-право */
+button.pill-l span {
+border-right-width: 0;
+}
+
+button.pill-l span span {
+border-right:1px solid #bbb;
+}
+
+button.pill-c span {
+border-right-style:none;
+border-left-color:#fff;
+}
+
+button.pill-c span span {
+border-right:1px solid #bbb;
+}
+
+button.pill-r span {
+border-left-color:#fff;
+}
+
+/* нужны только если у вас разные стили для хувера и актива */
+.btn:hover span, 
+.btn:hover span span, 
+.btn:focus span, 
+.btn:focus span span {
+cursor: pointer;
+border-color: #9cf !important;
+color: #000;
+}
+
+.btn:active span {
+background-position: 0 -400px;
+outline: none;
+}
+
+.btn:focus, 
+.btn:active {
+outline: none;
+}
+
+/* стиль для главной кнопки, например кнопка сохранения */
+.primary {
+font-weight: bold;
+color: #000;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+

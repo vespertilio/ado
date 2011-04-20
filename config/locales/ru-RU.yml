@@ -1,0 +1,11 @@
+ru:
+ models:
+  blog: 'Блог'
+  agent: 'Агент'
+ attributes:
+  blog:
+   user_id: 'Пользователь'
+  agent:
+   name: 'Имя'
+   
+     

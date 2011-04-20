@@ -1,0 +1,69 @@
+<%= link_to "Articles", :action => 'index', :html => {:class => "btn"} %>
+<table>
+<tr><td colspan=3>Откуда поступило</td><td><%= if @message.agent
+@message.agent.sname 
+elsif @message.org
+@message.org.name 
+end %></td></tr>
+<tr><td colspan=3>Дата получения</td><td><%= "#{@message.created_at.strftime('%d.%m.%y')} (3-1-09/#{@message.number})"  %></td></tr>
+<%for dir in @message.redirects%>
+	<tr>
+	  <td colspan=3>Кому направлено</td>
+	  <td><%=dir.agent.name%></td>
+	  <td><%=dir.subject%></td>
+	</tr>            
+<%end%>
+<tr><% form_for @message.redirects.new do |f|%>
+		 <%= f.hidden_field :message_id %>
+		<td> Кому отписть?</td>
+		<td colspan=3>
+		<%= select("redirect", :agent_id ,Org.first(:conditions => "name = 'Управление делами Губернатора Челябинской области'").agents.all.sort{|x,y| x.name <=> y.name}.collect {|p| [ p.name, p.id ] }, {:prompt => 'Выберете лицо'}) %>
+		<%= f.submit 'Отписать'%></>
+    <%end%>
+</td></tr>
+<tr><td colspan=3>Краткое содержание</td><td><%= @message.subject%></td></tr>
+
+</table>
+
+
+<table>
+<%counter = 1%>
+<%for card in @message.cards%>
+
+<tr>
+	<td><%=counter%></td>
+	<td><%= card.created_at.strftime('%d.%m.%y') %></td>
+	<% if card.file and card.status != ""%>
+	<td><%= link_to card.status , "http://192.168.20.10/uploads/cards/card.#{@message.id}.#{card.id}.#{card.file.split(/\./)[-1]}" %></td>
+	<%else%>
+	<td><%= card.status %></td>
+	<%end%>
+	
+	<td><%= link_to 'Коректировать', edit_card_path(card) %></td>
+	<td><%= link_to 'Удалить', card, :confirm => 'Вы уверены?', :method => :delete %></td>
+</tr>
+
+<%counter += 1%>
+<%end%>
+<br/>
+</table>
+<br/>
+<th> Внести новую запись</th>
+<% form_for(@message.cards.new, :html => {:multipart => true}) do |f|  %>
+<%= f.hidden_field :message_id%>
+<tr>
+	<td colspan=3><%= f.text_field :status, :size => 50 %></td>
+    <td><%= f.file_field :upload%></br>
+	<%= f.submit 'Записать' %> </td>
+	
+ </tr>
+<% end %>
+
+
+
+<br/>
+
+
+<br/><%= link_to "Отметить как звершенное", :controller => "message", :action => "complete", :id => @message %><br/>
+
+

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  agent_id: 1
+  document_id: 1
+  decision: MyString
+  comment: MyString
+  signname: 1
+
+two:
+  agent_id: 1
+  document_id: 1
+  decision: MyString
+  comment: MyString
+  signname: 1

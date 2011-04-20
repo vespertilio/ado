@@ -1,0 +1,40 @@
+<h1>Редактикрование реквизитов</h1>
+
+<% form_for(@message, :html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+  		<%= f.label "Автор" %><br />
+  		<%= text_field_with_auto_complete :message, :agent_name,{ :size => 135, :frequency => 5 }, { :url => agents_path(:js), :method => :get, :with => "'search=' + element.value" } %>
+	</p>
+
+  <p>
+    <%= f.label :number %><br />
+    <%= f.text_field :number, :size => 135 %>
+  </p>
+  <p>
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject, :size => 135 %>
+  </p>
+  <p>
+    <%= f.label :obtain_at %><br />
+    <%= f.date_select :obtain_at %>
+  </p>
+  <p>
+    <%= f.label :redirected_at %><br />
+    <%= f.date_select :redirected_at %>
+  </p>
+  <p>
+    <%= f.label "Исполнитель" %><br />
+    <%= f.text_field :executor_id, :size => 135 %>
+  </p>
+  <p>
+    <%= f.label "Прикрепить документ"%>
+    <%= f.file_field :upload%>
+	</p>
+  <p>
+    <%= f.submit 'Сохранить' %>
+  </p>
+<% end %>
+
+<%= link_to 'Назад', messages_path %>

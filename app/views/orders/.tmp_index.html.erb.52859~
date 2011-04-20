@@ -1,0 +1,46 @@
+<h1>Реестр приказов</h1>
+
+<table>
+  <tr>
+    <th>Номер</th>
+    <th>Дата</th>
+    <th>Внутрений номер</th>
+    <th>Содержание</th>
+    <th></th>
+    <th></th>
+  </tr>
+<% form_for(@order) do |f| %>
+  <%= f.error_messages %>
+<tr>
+  <td>
+    <%= f.text_field :number, :size => 1, :value => @orders[0].number.to_i+1%>
+  </td>
+  <td>
+    <%= f.date_select :date%>  
+  </td>
+  <td>
+    <%= f.text_field :intnumber, :size => 8, :value => "3-1-03/#{@orders[0].number.to_i+1}"%>
+  </td>
+  <td>
+    <%= f.text_field :desc, :size => 100 %>
+  </td>
+  <td colspan=2><%= f.submit 'Зарегистрировать' %></td>
+</tr>
+
+<% end %>
+
+<% @orders.each do |order| %>
+  <tr>
+    <td><%=h order.number %></td>
+    <td width=9%><%=h order.date %></td>
+    <td width=9%><%=h order.intnumber %></td>
+    <td><%=h order.desc %></td>
+    <td><%= link_to 'Исправить', edit_order_path(order) %></td>
+    <td><%= link_to 'Удалить', order, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Новый приказ', new_order_path %>

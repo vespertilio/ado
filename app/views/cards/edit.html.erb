@@ -1,0 +1,28 @@
+<h1>Editing card</h1>
+
+<% form_for(@card) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :message_id %><br />
+    <%= f.text_field :message_id %>
+  </p>
+  <p>
+    <%= f.label :farwarded_id %><br />
+    <%= f.text_field :farwarded_id %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </p>
+  <p>
+    <%= f.label :file_id %><br />
+    <%= f.text_field :file_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @card %> |
+<%= link_to 'Back', cards_path %>

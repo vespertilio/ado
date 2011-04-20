@@ -1,0 +1,20 @@
+<table>
+<tr><td>Откуда поступило</td><td><%= @message.agent.name %></td></tr>
+<tr><td>Дата получения</td><td><%= "#{@message.obtain_at} (3-1-09/#{@message.int_number})"  %></td></tr>
+<tr><td>Кому направлено</td><td><%= @message.executor_id%></td></tr>
+<tr><td>Наименование структурного подразделения</td><td><%= @message.executor_id%></td></tr>
+<tr><td>Краткое содержание</td><td><%= @message.subject%></td></tr>
+<tr><td>Контроль</td><td>дата контроля</td></tr>
+
+
+
+<%counter = 1%>
+<%for card in @cards%>
+
+<tr><td><%=counter%></td><td><%=card.status%></td><td><%= link_to 'Edit', edit_card_path(card) %></td></tr>
+
+<%counter += 1%>
+<%end%>
+</table>
+<%= link_to "Новая запись", :controller => "cards", :action => "new", :id => @message %>
+

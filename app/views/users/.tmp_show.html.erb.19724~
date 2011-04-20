@@ -1,0 +1,17 @@
+<table>
+<tr>
+  <td><b>Name</b>:</td>
+  <td><%=h @user.name %></td>
+</tr>
+
+<%for post in @user.posts%>
+<tr>
+	<td> <%=h post.title%> </td>
+ <td> <%=h post.created_at%> </td>
+ </tr>
+<%end%>
+
+
+<tr><td><%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %></td></tr>
+</table>

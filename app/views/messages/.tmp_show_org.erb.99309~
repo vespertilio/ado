@@ -1,0 +1,7 @@
+ <label for="message_Должность">Должность</label><br /> 
+        <input id="message_agent_position" name="message[agent_position]" size="25" type="text" value="<%= @agent.position if @agent%>"/> 
+   
+   
+        <label for="message_Организация">Организация</label><br /> 
+        <input id="message_agent_org" name="message[agent_org]" size="25" type="text" value="<%= @agent.org.name if @agent.org%>"/> 
+  

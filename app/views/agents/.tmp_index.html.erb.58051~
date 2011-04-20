@@ -1,0 +1,31 @@
+<h1>Listing agents</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Cell</th>
+    <th>Position</th>
+    <th>Org</th>
+   <th>
+   <th>
+   <th>
+  </tr>
+
+<% @agents.each do |agent| %>
+  <tr>
+    <td><%=h agent.name %></td>
+    <td><%=h agent.phone %></td>
+    <td><%=h agent.cell %></td>
+    <td><%=h agent.position %></td>
+    <td><%=h agent.org_id %></td>
+    <td><%= link_to 'Show', agent %></td>
+    <td><%= link_to 'Edit', edit_agent_path(agent) %></td>
+    <td><%= link_to 'Destroy', agent, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New agent', new_agent_path %>

@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @agent.name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%=h @agent.phone %>
+</p>
+
+<p>
+  <b>Cell:</b>
+  <%=h @agent.cell %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%=h @agent.position %>
+</p>
+
+<p>
+  <b>Org:</b>
+  <%=h @agent.org_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_agent_path(@agent) %> |
+<%= link_to 'Back', agents_path %>

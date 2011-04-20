@@ -1,0 +1,26 @@
+<h1>Listing cards</h1>
+
+<table>
+  <tr>
+    <th>Message</th>
+    <th>Farwarded</th>
+    <th>Status</th>
+    <th>File</th>
+  </tr>
+
+<% @cards.each do |card| %>
+  <tr>
+    <td><%=h card.message_id %></td>
+    <td><%=h card.farwarded_id %></td>
+    <td><%=h card.status %></td>
+    <td><%=h card.file_id %></td>
+    <td><%= link_to 'Show', card %></td>
+    <td><%= link_to 'Edit', edit_card_path(card) %></td>
+    <td><%= link_to 'Destroy', card, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New card', new_card_path %>

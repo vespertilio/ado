@@ -1,0 +1,28 @@
+<h1>Editing commendant</h1>
+
+<% form_for(@commendant) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :cell %><br />
+    <%= f.text_field :cell %>
+  </p>
+  <p>
+    <%= f.label :org_id %><br />
+    <%= f.text_field :org_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @commendant %> |
+<%= link_to 'Back', commendants_path %>

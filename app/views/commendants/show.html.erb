@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @commendant.name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%=h @commendant.phone %>
+</p>
+
+<p>
+  <b>Cell:</b>
+  <%=h @commendant.cell %>
+</p>
+
+<p>
+  <b>Org:</b>
+  <%=h @commendant.org_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_commendant_path(@commendant) %> |
+<%= link_to 'Back', commendants_path %>

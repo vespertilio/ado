@@ -1,0 +1,20 @@
+Номер <%= @message.number%><br/>
+<%= @message.int_number%><br/>
+Дата <%= @message.created_at%><br/>
+Поступило от <%= @message.agent.name if @message.agent%><br/>
+<%= @message.org.name%><br/>
+
+<% form_for(@message, :html => {:multipart => true}) do |f|  %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label "Прикрепить документ"%>
+    <%= f.file_field :upload%>
+  </p>
+  
+  
+  <p>
+    <%= f.submit 'Корректировать' %>
+  </p>
+<% end %>
+
+

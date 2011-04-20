@@ -1,0 +1,17 @@
+<b>Номер</b> <%= @message.number%><br/>
+<%= @message.int_number%><br/>
+<b>Дата</b> <%= @message.created_at%><br/>
+<b>Поступило от </b><%= @message.agent.name if @message.agent%><br/>
+<%= @message.org.name%><br/>
+
+<% form_for @message.redirects.new do |f|%>
+     <%= f.hidden_field :message_id %>
+    
+    <b>Резолюция</b><br/>
+    <%= f.text_area :subject%><br/>
+    <b>Кому направить?</b><br/>
+    <%= select("redirect", :agent_id ,Org.first(:conditions => "name = 'Управление делами Губернатора Челябинской области'").agents.all.sort{|x,y| x.name <=> y.name}.collect {|p| [ p.name, p.id ] }, {:prompt => 'Выберете лицо'}) %>
+    
+    <%= f.submit 'Направить'%></>
+<%end%>
+

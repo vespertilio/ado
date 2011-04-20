@@ -1,0 +1,98 @@
+<style>
+
+#main { position: absolute; display: none; top: 0px; left: 0px; background-color: #fff }
+#modalbox { width: 300px; height: 200px; border: 1px solid #ECC113; position: absolute; background-color: #FFEFAF; display: none; z-index: 2 }
+div#shade { background-color: #ECECEC; width: 300px; height: 200px; position: absolute; display: none; z-index: 1 }
+.log { text-decoration: underline; cursor: pointer; color: #ff0000 }
+#caption { background-color: #FF6826; border-bottom: 1px solid #fff; color: #fff; font: 11px verdana; padding: 4px; 
+font-weight: bold }
+#body { padding: 10px; font: 11px verdana; padding-top: 15px; text-align: center }
+#body table { font: 11px verdana }
+#body a { color: #FF6600 }
+.but { font: 11px verdana }
+
+</style>
+
+<body> 
+
+<span class="log" onclick="ShowModalbox()">Войти</span><br\>
+<div id="shade"></div>
+<div id="modalbox" style="filter: alpha(opacity=100)">
+<div id="caption" style="filter: alpha(opacity=100)">Модальное окно :: Вход</div>
+<div id="body">
+Введите данные для входа: <br><br>
+
+<table>
+<tr><% form_for @message.redirects.new do |f|%>
+     <%= f.hidden_field :message_id %>
+    <td> Кому отписть?</td>
+    <td colspan=3>
+    <%= select("redirect", :agent_id ,Org.first(:conditions => "name = 'Управление делами Губернатора Челябинской области'").agents.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Выберете лицо'}) %>
+    <%= f.submit 'Отписать'%></>
+    <%end%>
+</td></tr>
+</table>
+<br>
+<input type="button" value="Вход" class="but" onclick="LogIn()"> <input type="button" value="Отмена" class="but" onclick="HideModalbox()">
+</div>
+
+</div>
+
+<div id="main"></div>
+</body>
+
+<script>
+
+var modalbox;
+var shade;
+var scrollWidth;
+var scrollHeight;
+
+window.onload = function() {
+
+modalbox = document.getElementById("modalbox");
+shade = document.getElementById("shade");
+
+scrollWidth = document.body.scrollWidth;
+scrollHeight = document.body.scrollHeight;
+
+document.getElementById("main").style.width = scrollWidth;
+document.getElementById("main").style.height = scrollHeight;
+
+}
+
+function ShowModalbox() {
+
+document.getElementById("main").style.filter = "alpha(opacity=80)";
+document.getElementById("main").style.opacity = 0.8;
+document.getElementById("main").style.display = "block";
+
+modalbox.style.display = "block";
+shade.style.display = "block";
+posleft = Math.round(scrollWidth / 2) - 150;
+postop = document.body.scrollHeight - 600;
+
+shade.style.left = posleft + 7;
+shade.style.top = document.body.scrollTop + 307;
+
+modalbox.style.left = posleft;
+modalbox.style.top = document.body.scrollTop + 300;
+
+}
+
+function Redirect() {
+
+HideModalbox();
+document.location.href = "";
+
+}
+
+function HideModalbox() {
+
+document.getElementById("main").style.display = "none";
+modalbox.style.display = "none";
+shade.style.display = "none";
+
+}
+
+</script> 

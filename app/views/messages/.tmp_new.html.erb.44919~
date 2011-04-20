@@ -1,0 +1,65 @@
+<%= javascript_include_tag :defaults%>
+<%= link_to "Входящие", :action => "index" %>
+<h1>Новое входящее</h1>
+
+<% form_for(@message) do |f| %>
+  <%= f.error_messages %>
+  <p>
+		<%= f.label "Автор" %><br />
+		<%= text_field_with_auto_complete :message, 
+		                                  :agent_name,
+		                                  { :size => 135, :frequency => 5 }, 
+		                                  { :url => agents_path(:js), :method => :get, :with => "'search=' + element.value" } %>
+	</p>
+    <%= observe_field :message_agent_name, 
+                      :on => "onchange", 
+                      :url => {:action=> :show_org}, 
+                      :update => "agent", 
+                      :with => "'id='+value"  %>
+
+    
+	<div id="agent">
+		<p> 
+    		<%= f.label "Должность"%><br />
+   			<%= f.text_field :agent_position, :size => 135%> 
+		</p>
+		<p> 
+    		<%= f.label "Организация"%><br />
+    		<%= f.text_field :agent_org, :size => 135%> 
+   			 
+		</p> 
+	</div>  
+	
+	
+  <p>
+    <%= f.label "Входящий"%><br />
+    <%= f.text_field :number, :size => 135 %>
+  </p>
+
+  <p>
+    <%= f.label "Исходящий"%><br />
+    <%= f.text_field :int_number, :size => 135 %>
+  </p>
+
+  <p>
+    <%= f.label "Тема" %><br />
+    <%= f.text_field :subject, :size => 135 %>
+  </p>
+  
+  <p>
+    <%= f.label "Получено" %><br />
+    <%= f.date_select :obtain_at %>
+  </p>
+  <p>
+    <%= f.label "Прикрепить документ"%>
+    <%= f.file_field :upload%>
+  </p>
+  
+  
+  <p>
+    <%= f.submit 'Зарегистрировать' %>
+  </p>
+<% end %>
+
+<%= link_to 'Назад', messages_path %>
+<%= params.inspect%>

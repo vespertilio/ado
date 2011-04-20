@@ -1,0 +1,33 @@
+<p>
+  <b>Author:</b>
+  <%=h @message.agent_id %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%=h @message.number %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%=h @message.subject %>
+</p>
+
+<p>
+  <b>Obtain at:</b>
+  <%=h @message.obtain_at %>
+</p>
+
+<p>
+  <b>Redirected at:</b>
+  <%=h @message.redirected_at %>
+</p>
+
+<p>
+  <b>Executor:</b>
+  <%=h @message.executor_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>

@@ -1,0 +1,36 @@
+<%= javascript_include_tag :defaults %>
+<%= link_to_function("Print this Page", "javascript:print()")%>
+<h1>Входящие</h1>
+
+<table border=1>
+  <tr>
+    <th>Автор</th>
+    <th>Входящий номер</th>
+    <th>Исходящий номер</th>
+    <th>Тема</th>
+    <th>Исполнитель</th>
+	<th>Действия</th>    
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%=h message.agent.name%></td>
+    <td>
+    	<%=h message.number %> <br/>
+		<small><%=h message.obtain_at %></small>
+	</td>
+    <td>3-1-09/<%=h message.int_number %></td>
+    <td><%=h message.subject %></td>
+    <td><%=h message.executor_id %></td>
+    <td><%= link_to 'Показать', message %><br/ >
+    <%= link_to 'Исправить', edit_message_path(message) %> <br />
+    <%= link_to 'Удалить', message, :confirm => 'ВНИМАНИЕ! Сообщение будет безвозвратно удалено !', :method => :delete %><br/>
+	<%= link_to "Карточка", :controller => "cards", :action => "show", :id => message %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Зарегистрировать новое входящее', new_message_path %>
