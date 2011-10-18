@@ -1,5 +1,0 @@
-<p> 
-    <label for="message_Исходящий">Должность</label><br /> 
-    <input id="message_agent_position" name="message[agent_position]" size="135" type="text"  value= "<%= @agent.position if @agent%>"/> 
-</p> 
-  

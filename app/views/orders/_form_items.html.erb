@@ -1,8 +1,0 @@
-<% javascript_tag do -%>
-  var <%= "#{form_items}" %> = [
-    <%= ext_field(:field_label => 'Номер', :name => 'order[number]', :xtype => :text_field) %>,
-    <%= ext_field(:field_label => 'Дата', :name => 'order[date]', :xtype => :text_field) %>,
-    <%= ext_field(:field_label => 'Внутрений номер', :name => 'order[intnumber]', :xtype => :text_field) %>,
-    <%= ext_field(:field_label => 'Содержание', :name => 'order[desc]', :xtype => :text_area) %>
-  ];
-<% end -%>

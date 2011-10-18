@@ -1,2 +1,0 @@
-class RedirectController < ApplicationController
-end
