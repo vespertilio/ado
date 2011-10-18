@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Author:</b>
+  <%= @message.author_id %>
+</p>
+
+<p>
+  <b>Org:</b>
+  <%= @message.org_id %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @message.desc %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @message.state %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>

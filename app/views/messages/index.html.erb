@@ -1,0 +1,73 @@
+<body onkeydown="if(event.ctrlKey &amp;&amp; event.keyCode == 39) alert('Ctrl+G');">
+<h1>Входящие письма</h1>
+<div class="message">
+  <div class="list">
+    <div class="head">
+      <div class="npp">№ п/п</div>
+      <div class="author">Автор</div>
+      <div class="int_number">Входящий номер</div>
+      <div class="out_number">Исходящий номер</div>
+      <div class="subject">Тема</div>
+      <div class="executor">Исполнитель</div>
+      <div class="action">Действия</div>
+      <div class="state">Состояние</div>
+    </div>
+    <% @messages.each do |message| %>
+      <div class="entry">
+        <div class="npp"> <%= message.id%></div>
+        <div class="author"><%= message.author_id %>
+          <div class="org"> Министерство финансов Челябинской области</div>
+        </div>
+        <div class="int_number">2-3-4-5</div>
+        <div class="out_number">3-1-010 123123</div>
+        <div class="suject"<%= message.desc %>
+        <%= message.state %>
+        <%= button_to 'Показать', message, :method => :get %>
+        <%= button_to 'Исправить', edit_message_path(message), :method => :get %>
+        <%= button_to 'Удалить', message, :confirm => 'Вы уверены?', :method => :delete %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<table>
+  <tr>
+    <th>Автор</th>
+    <th>Входящий номер</th>
+    <th>Исходящий номер</th>
+    <th>Номера</th>
+    <th>Тема</th>
+    <th>Исполнитель</th>
+    <th>Действия</th>
+    <th>Состояние</th>
+
+  </tr>
+
+  <% @messages.each do |message| %>
+    <tr>
+      <td><%= message.author_id %></td>
+      <td><%= message.org.name %></td>
+      <td><%= message.desc %></td>
+      <td><%= message.state %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        <%= button_to 'Показать', message, :method => :get %>
+        <%= button_to 'Исправить', edit_message_path(message), :method => :get %>
+        <%= button_to 'Удалить', message, :confirm => 'Are you sure?', :method => :delete %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="8">
+        <div class="form" id="<%= message.id %>">
+          <%= render 'form', :message => message %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<br/>
+
+<%= link_to 'New Message', new_message_path %>

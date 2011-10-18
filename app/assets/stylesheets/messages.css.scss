@@ -1,0 +1,40 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.message {
+  .list {
+    border: 2px solid;
+
+    .head {
+      border: 1px solid;
+      font-weight: bold;
+      display: table-row;
+      background-color: #e0e0e0;
+      .header {
+        float: left;
+        font-weight: bold;
+        margin: 2px;
+      }
+    }
+    .entry {
+      display: table-row;
+
+    }
+  }
+}
+.npp, .author, .int_number, .out_number {
+  display: table-cell;
+
+}
+.npp {
+  width: 2%;
+}
+.author {
+  width: 15%;
+}
+.int_number {
+  width: 10%;
+}
+.out_number {
+  width: 10%;
+}
